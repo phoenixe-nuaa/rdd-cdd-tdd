@@ -2,7 +2,7 @@ var data = require('./data');
 
 
 /**
- * A weather format object wrapped from the JSON data.
+ * A weather format object parsed from the JSON data.
  * @constructor
  * @param {object} json - The JSON data from the website.
  * @param {string} units - The units used to represent the temperature and speed.

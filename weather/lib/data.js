@@ -6,6 +6,7 @@ var chalk = require('chalk'),
 /**
  * Collect the date data from the weather forcast data
  * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of date data string.
  */
 function collectDates(data) {
     var dates = [];
@@ -21,6 +22,7 @@ function collectDates(data) {
 /**
  * Collect the highest temperature  from the weather forcast data
  * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of highest temperature data string.
  */
 function collectHighs(data, units) {
     var highs = [],
@@ -46,6 +48,7 @@ function collectHighs(data, units) {
 /**
  * Collect the lowest temperature from the weather forcast data
  * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of lowest temperature data string.
  */
 function collectLows(data, units) {
     var lows = [],
@@ -70,6 +73,7 @@ function collectLows(data, units) {
 /**
  * Collect the summary information from the weather forcast data
  * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of summary data string.
  */
 function collectSummary(data) {
     var summaries = [];
@@ -84,6 +88,7 @@ function collectSummary(data) {
 /**
  * Collect the precip probability data from the weather forcast data
  * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of precip probability data string.
  */
 function collectPrecip(data) {
 
@@ -97,6 +102,11 @@ function collectPrecip(data) {
 
 }
 
+/**
+ * Generate the date string from a date object.
+ * @params {Date} date - The date object.
+ * @returns {string} The date string.
+ */
 function formatTime(date) {
     var suffix = "am";
     var hours = date.getHours();
@@ -120,6 +130,11 @@ function formatTime(date) {
     return hours + ":" + minutes + " " + suffix;
 }
 
+/**
+ * Collect the sunrise data from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of sunrise data string.
+ */
 function collectSunrises(data) {
     var sunrises = [];
 
@@ -134,6 +149,13 @@ function collectSunrises(data) {
 
     return sunrises;
 }
+
+
+/**
+ * Collect the sunset data from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ * @returns {string[]} A list of sunset data string.
+ */
 function collectSunsets(data) {
     var sunsets = [];
 
@@ -149,6 +171,12 @@ function collectSunsets(data) {
     return sunsets;
 }
 
+/**
+ * Display the current weather.
+ * @param {object} now - The current weather data.
+ * @param {object} units - The units used to represent the temperature and speed.
+ * @returns {string} The string representing the current weather.
+ */
 function display(now, units) {
 
 
@@ -170,6 +198,17 @@ function display(now, units) {
     return current + '\n';
 }
 
+/**
+ * Transform the weather data into a table.
+ * @param {string[]} headers - The headers
+ * @param {string[]} highs - A list of higest temperature. data 
+ * @param {string[]} lows - A list of lowest temperature data.
+ * @param {string[]} icons - A list of icons.
+ * @param {string[]} precips - A list of precip probability data.
+ * @param {string[]} sunrises - A list of sunrise time data.
+ * @param {string[]} sunsets - A list of sunset time data.
+ * @returns {string} The string representing the current weather.
+ */
 function displayTable(headers, highs, lows, icons, precips, sunrises, sunsets) {
     var Table = new table({
         head: headers,
@@ -186,6 +225,11 @@ function displayTable(headers, highs, lows, icons, precips, sunrises, sunsets) {
     return Table.toString();
 }
 
+/**
+ * Generate a list of icon representing the weather.
+ * @param {object[]} - A list of weather forcast data.
+ * @return {string[]} A list of icon.
+ */
 function icon(array) {
     var icons = [];
 
