@@ -1,5 +1,12 @@
 var data = require('./data');
 
+
+/**
+ * A weather format object wrapped from the JSON data.
+ * @constructor
+ * @param {object} json - The JSON data from the website.
+ * @param {string} units - The units used to represent the temperature and speed.
+ */
 function Format(json, units) {
     var obj = JSON.parse(json),
         current = obj.currently,
@@ -17,10 +24,20 @@ function Format(json, units) {
     this.currentWeather = data.display(current, units);
 }
 
+/**
+ * Display a table in the console.
+ * @returns {string} - The table made up by characters.
+ */
 Format.prototype.tabled = function () {
     return data.displayTable(this.dates, this.highs, this.lows, this.icons, this.precips, this.sunrises, this.sunsets);
 };
 
+/**
+ * Create a new instance.
+ * @param {object} json - The JSON data from the website.
+ * @param {string} units - The units used to represent the temperature and speed.
+ * @returns {object} - A Format object.
+ */
 function instance(json, units) {
     return new Format(json, units);
 }

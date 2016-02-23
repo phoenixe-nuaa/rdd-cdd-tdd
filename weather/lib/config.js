@@ -9,6 +9,12 @@ var args = require('./args'),
 var path = pathing.dirname(require.main.filename) + '/lib/config.json',
     help = require('./help');
 
+/**
+ * Set the config of the program.
+ * @constructor
+ * @param {Object} units - The units used to represent the temperature and speed.
+ * @param {string} ip - The public IP address that you have.
+ */
 function Config(units, ip) {
     this.args = parseArgs(process.argv.slice(2));
     this.units = units;
@@ -54,6 +60,13 @@ if(!String.prototype.includes) {
 }
 
 
+/**
+ * Write the config data into the config file.
+ * @param {Object} args - The command line parameters that you passed to the program.
+ * @param {Object} units - The units used to represent the temperature and speed.
+ * @param {string} ip - The public IP address that you have.
+ * @returns {object} - A Config object.
+ */
 function write(args, units, ip) {
 
     console.log(chalk.red('you may have to use ') + chalk.bgBlack.white('sudo') +
@@ -73,6 +86,12 @@ function write(args, units, ip) {
 
 }
 
+/**
+ * Read the condig data from the config file.
+ * @param {Object} args - The command line parameters that you passed to the program.
+ * @param {Object} units - The units used to represent the temperature and speed.
+ * @param {string} ip - The public IP address that you have.
+ */
 function read(args, units, ip) {
 
     if (args.c && !(args.s || args.save)) {
@@ -96,6 +115,12 @@ function read(args, units, ip) {
     }
 }
 
+/**
+ * Handle all the arguments
+ * @param {Object} argv - The command line parameters that you passed to the program.
+ * @param {Object} units - The units used to represent the temperature and speed.
+ * @param {string} ip - The public IP address that you have.
+ */
 function handleArgs(argv, units, ip) {
 
     help(argv);
@@ -118,6 +143,11 @@ function handleArgs(argv, units, ip) {
 
 }
 
+/**
+ * Create a new instance.
+ * @param {object} units - The units used to represent the temperature and speed.
+ * @param {string} ip - The public IP address that you have.
+ */
 function instance(units, ip) {
     return new Config(units, ip);
 }

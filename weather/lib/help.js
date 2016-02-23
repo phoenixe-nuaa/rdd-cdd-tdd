@@ -2,6 +2,10 @@ var chalk = require('chalk'),
   pkg = require('../package.json'),
   col = chalk.bgBlack.white;
 
+/**
+ * Display the help message. 
+ * @param {object} args - The command line parameters that you passed to the program.
+ */
 function help(args) {
 
   var belp =

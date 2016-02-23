@@ -3,6 +3,12 @@ var http = require('http'),
     chalk = require('chalk'),
     Format = require('./format');
 
+/**
+ * Get the weather information and display it in the console.
+ * @param {Object} location - Your location, including latitude and longitude.
+ * @param {Object} units - The units used to represent the temperature and speed.
+ * @param {string} ip - The public IP address that you have.
+ */
 function weatherRequest(location, units, args) {
     var weather_options = {
         host: 'api.forecast.io',
@@ -28,6 +34,9 @@ function weatherRequest(location, units, args) {
     });
 }
 
+/**
+ * 
+ */
 function address(addr, callback, units, args) {
 
     var location_options = {
@@ -60,6 +69,13 @@ function address(addr, callback, units, args) {
     });
 }
 
+/**
+ * Get the geographical location from your ip.
+ * @param {string} ip - The public IP address that you have.
+ * @param {weatherRequest} callback - The callback that handles the response.
+ * @param {Object} units - The units used to represent the temperature and speed.
+ * @param {Object} args - The command line parameters that you passed to the program.
+ */
 function automatic(ip, callback, units, args) {
 
     var location_options = {

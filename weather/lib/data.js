@@ -3,6 +3,10 @@ var chalk = require('chalk'),
     blue = chalk.blue,
     table = require('cli-table');
 
+/**
+ * Collect the date data from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ */
 function collectDates(data) {
     var dates = [];
 
@@ -14,6 +18,10 @@ function collectDates(data) {
     return dates;
 }
 
+/**
+ * Collect the highest temperature  from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ */
 function collectHighs(data, units) {
     var highs = [],
         temp,
@@ -35,6 +43,10 @@ function collectHighs(data, units) {
     return highs;
 }
 
+/**
+ * Collect the lowest temperature from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ */
 function collectLows(data, units) {
     var lows = [],
         temp,
@@ -55,6 +67,10 @@ function collectLows(data, units) {
     return lows;
 }
 
+/**
+ * Collect the summary information from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ */
 function collectSummary(data) {
     var summaries = [];
 
@@ -65,6 +81,10 @@ function collectSummary(data) {
     return summaries;
 }
 
+/**
+ * Collect the precip probability data from the weather forcast data
+ * @param {Object[]} data - A list of weather forcast data.
+ */
 function collectPrecip(data) {
 
     var precips = [];
